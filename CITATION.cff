@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software in academic work, please cite it as below."
+title: "ai-governance-checker: Pre-deployment governance audit for LLM system prompts against OWASP LLM Top 10 (2025), NIST AI RMF 1.0, and the EU AI Act"
+authors:
+  - family-names: "Bhutto"
+    given-names: "Ali Murtaza"
+    orcid: "https://orcid.org/0009-0007-2787-943X"
+    affiliation: "Independent Researcher"
+license: MIT
+type: software
+repository-code: "https://github.com/thunderstornX/ai-governance-checker"
+keywords:
+  - "AI governance"
+  - "OWASP LLM Top 10"
+  - "NIST AI RMF"
+  - "EU AI Act"
+  - "compliance"
+  - "LLM safety"
+  - "system prompt audit"
+  - "LLM-as-a-judge"
+version: "0.1.0"
+date-released: "2026-05-06"
+doi: "10.5281/zenodo.XXXXXXX"

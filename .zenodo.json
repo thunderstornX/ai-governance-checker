@@ -1,0 +1,33 @@
+{
+  "title": "ai-governance-checker: Pre-deployment governance audit for LLM system prompts against OWASP LLM Top 10 (2025), NIST AI RMF 1.0, and the EU AI Act",
+  "description": "A Python CLI that audits an LLM system prompt against three governance frameworks at once: the OWASP Top 10 for LLM Applications (2025 revision), NIST AI Risk Management Framework 1.0, and the EU AI Act high-risk-system checklist. Each rule cites the specific framework section it implements (e.g., LLM01:2025, NIST GOVERN-1.1, EU AI Act Art. 14). An optional LLM-as-a-judge module forwards the prompt to either Anthropic Claude or a local Ollama model for a structured second opinion; absence of every API key gracefully degrades to a rules-only run. The repository ships a 30-prompt labelled eval set (10 safe / 10 risky / 10 mixed) and reports real measured precision, recall, and F1 on a rules-only run.",
+  "creators": [
+    {
+      "name": "Bhutto, Ali Murtaza",
+      "orcid": "0009-0007-2787-943X",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "AI governance",
+    "OWASP LLM Top 10",
+    "NIST AI RMF",
+    "EU AI Act",
+    "compliance",
+    "LLM safety",
+    "system prompt audit",
+    "LLM-as-a-judge"
+  ],
+  "communities": [
+    {"identifier": "ai-safety"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/thunderstornX/ai-governance-checker",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "upload_type": "software"
+}

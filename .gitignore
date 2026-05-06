@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtualenvs
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# CLI outputs
+report.json
+report.md
+report-*.json
+report-*.md
+
+# Security tooling
+bandit-report.json
+semgrep-report.json
+pip-audit-report.json
+
+# LaTeX intermediates
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.dvi
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
