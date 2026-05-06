@@ -1,0 +1,166 @@
+{
+  "aggregate": {
+    "accuracy": 0.9667,
+    "f1": 0.9626,
+    "fn": 3,
+    "fp": 13,
+    "precision": 0.9406,
+    "recall": 0.9856,
+    "tn": 258,
+    "tp": 206
+  },
+  "always_fire": [
+    "EU-AIA-Art-10",
+    "LLM03:2025",
+    "LLM04:2025",
+    "MANAGE-2.3"
+  ],
+  "n_framework_ids": 16,
+  "n_prompts": 30,
+  "per_framework_id": {
+    "EU-AIA-Art-12": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 10,
+      "tp": 20
+    },
+    "EU-AIA-Art-13": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 13,
+      "tp": 17
+    },
+    "EU-AIA-Art-14": {
+      "f1": 0.9744,
+      "fn": 0,
+      "fp": 1,
+      "precision": 0.95,
+      "recall": 1.0,
+      "tn": 10,
+      "tp": 19
+    },
+    "EU-AIA-Art-15": {
+      "f1": 0.8966,
+      "fn": 2,
+      "fp": 1,
+      "precision": 0.9286,
+      "recall": 0.8667,
+      "tn": 14,
+      "tp": 13
+    },
+    "GOVERN-1.1": {
+      "f1": 0.8,
+      "fn": 0,
+      "fp": 1,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "tn": 27,
+      "tp": 2
+    },
+    "GOVERN-1.3": {
+      "f1": 0.9524,
+      "fn": 0,
+      "fp": 2,
+      "precision": 0.9091,
+      "recall": 1.0,
+      "tn": 8,
+      "tp": 20
+    },
+    "LLM01:2025": {
+      "f1": 0.9375,
+      "fn": 0,
+      "fp": 2,
+      "precision": 0.8824,
+      "recall": 1.0,
+      "tn": 13,
+      "tp": 15
+    },
+    "LLM02:2025": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 27,
+      "tp": 3
+    },
+    "LLM05:2025": {
+      "f1": 0.95,
+      "fn": 0,
+      "fp": 2,
+      "precision": 0.9048,
+      "recall": 1.0,
+      "tn": 9,
+      "tp": 19
+    },
+    "LLM06:2025": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 26,
+      "tp": 4
+    },
+    "LLM07:2025": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 28,
+      "tp": 2
+    },
+    "LLM08:2025": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 28,
+      "tp": 2
+    },
+    "LLM09:2025": {
+      "f1": 0.9697,
+      "fn": 0,
+      "fp": 1,
+      "precision": 0.9412,
+      "recall": 1.0,
+      "tn": 13,
+      "tp": 16
+    },
+    "LLM10:2025": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 14,
+      "tp": 16
+    },
+    "MAP-3.4": {
+      "f1": 0.9744,
+      "fn": 0,
+      "fp": 1,
+      "precision": 0.95,
+      "recall": 1.0,
+      "tn": 10,
+      "tp": 19
+    },
+    "MEASURE-2.8": {
+      "f1": 0.9268,
+      "fn": 1,
+      "fp": 2,
+      "precision": 0.9048,
+      "recall": 0.95,
+      "tn": 8,
+      "tp": 19
+    }
+  }
+}
