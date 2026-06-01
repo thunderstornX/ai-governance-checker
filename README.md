@@ -17,8 +17,6 @@
 [![Eval F1](https://img.shields.io/badge/F1%20%28rules--only%29-0.9626-brightgreen)](results/README.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20480458.svg)](https://doi.org/10.5281/zenodo.20480458)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Zenodo](https://img.shields.io/badge/zenodo-DOI%20pending-9cf)](.zenodo.json)
-
 `ai-governance-checker` is a small Python CLI that audits an LLM
 *system prompt* against three governance frameworks at once:
 
