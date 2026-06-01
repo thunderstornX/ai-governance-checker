@@ -101,7 +101,7 @@ with three-step graceful fallback (Anthropic $\rightarrow$ Ollama
 $\rightarrow$ DISABLED) so the tool stays useful when no API key is
 present. (3) A 30-prompt labelled eval corpus and an offline,
 deterministic eval harness that reports real measured precision /
-recall / $F_1$ per framework section. (4) An 89-test pytest suite
+recall / $F_1$ per framework section. (4) A 90-test pytest suite
 and a hardened DevSecOps build (Bandit, pip-audit, Semgrep) so the
 tool can be vendored into a defender's environment without first
 paying down a supply-chain debt.
@@ -252,7 +252,7 @@ Eval wall-clock    & $<1\,s$ \\
 \end{table}
 
 \subsection{Test suite}
-The repository ships 89 \texttt{pytest} tests covering every rule's
+The repository ships 90 \texttt{pytest} tests covering every rule's
 positive and negative branches, the judge module's three fallback
 paths under \texttt{respx}-mocked HTTP, the aggregator's severity
 roll-up, and the reporter's Markdown/JSON pair. Total wall-clock
@@ -315,7 +315,7 @@ this additive.
 LLM governance tooling does not need new theory. What it needs is
 honest framework citations, graceful degradation when API keys are
 absent, and a small reproducible eval that demonstrates the rule
-pack actually does what its README claims. The 89-test, 20-rule,
+pack actually does what its README claims. The 90-test, 20-rule,
 three-framework, MIT-licensed pipeline described here is one such
 instance.
 

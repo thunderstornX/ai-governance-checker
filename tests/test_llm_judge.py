@@ -53,14 +53,24 @@ def test_parse_judge_reply_well_formed():
 
 
 def test_parse_judge_reply_empty_findings():
+    # A valid envelope with no findings is a clean "no concerns" verdict,
+    # not a parse failure: parses to [] (not None).
     assert _parse_judge_reply('{"findings": []}') == []
 
 
 def test_parse_judge_reply_handles_garbage():
-    assert _parse_judge_reply("not json") == []
+    # Unparseable reply -> None so the caller can flag PARSE_ERROR.
+    assert _parse_judge_reply("not json") is None
+
+
+def test_parse_judge_reply_missing_envelope():
+    # Valid JSON but no findings key -> None (not a findings envelope).
+    assert _parse_judge_reply('{"other": 1}') is None
 
 
 def test_parse_judge_reply_skips_titleless():
+    # Valid envelope; the one item lacks a title, so it is skipped, but
+    # the reply parsed fine -> [] (not None).
     body = '{"findings":[{"detail":"only detail"}]}'
     assert _parse_judge_reply(body) == []
 

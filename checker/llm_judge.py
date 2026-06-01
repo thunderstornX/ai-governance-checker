@@ -94,15 +94,20 @@ def _strip_code_fences(s: str) -> str:
     return m.group(1).strip() if m else s
 
 
-def _parse_judge_reply(raw: str) -> list[Finding]:
-    """Parse the JSON envelope into Findings. Empty list on any error."""
+def _parse_judge_reply(raw: str) -> list[Finding] | None:
+    """Parse the JSON envelope into Findings.
+
+    Returns ``None`` when the reply cannot be parsed at all (not valid
+    JSON, or no ``findings`` list present) so the caller can distinguish
+    a genuine parse failure from a valid "no concerns" verdict (an empty
+    ``findings`` list, which returns ``[]``)."""
     try:
         data = json.loads(_strip_code_fences(raw))
     except json.JSONDecodeError:
-        return []
-    items = data.get("findings") if isinstance(data, dict) else []
+        return None
+    items = data.get("findings") if isinstance(data, dict) else None
     if not isinstance(items, list):
-        return []
+        return None
     out: list[Finding] = []
     for i, item in enumerate(items):
         if not isinstance(item, dict):
@@ -168,15 +173,15 @@ def _judge_via_anthropic(
         data = r.json() or {}
         content = (data.get("content") or [{}])[0]
         text = content.get("text", "") if isinstance(content, dict) else ""
-        findings = _parse_judge_reply(text)
+        parsed = _parse_judge_reply(text)
         return JudgeResult(
-            status=JudgeStatus.OK if findings else JudgeStatus.PARSE_ERROR,
+            status=JudgeStatus.PARSE_ERROR if parsed is None else JudgeStatus.OK,
             provider="anthropic",
             model=settings.anthropic_model,
-            findings=findings,
+            findings=parsed or [],
             raw=text,
-            note=None if findings else (
-                "no findings parsed from anthropic response"),
+            note=("could not parse anthropic response as a findings envelope"
+                  if parsed is None else None),
             elapsed_ms=(time.perf_counter() - started) * 1000.0,
         )
     finally:
@@ -222,15 +227,15 @@ def _judge_via_ollama(
             )
         data = r.json() or {}
         text = (data.get("message") or {}).get("content", "")
-        findings = _parse_judge_reply(text)
+        parsed = _parse_judge_reply(text)
         return JudgeResult(
-            status=JudgeStatus.OK if findings else JudgeStatus.PARSE_ERROR,
+            status=JudgeStatus.PARSE_ERROR if parsed is None else JudgeStatus.OK,
             provider="ollama",
             model=settings.ollama_model,
-            findings=findings,
+            findings=parsed or [],
             raw=text,
-            note=None if findings else (
-                "no findings parsed from ollama response"),
+            note=("could not parse ollama response as a findings envelope"
+                  if parsed is None else None),
             elapsed_ms=(time.perf_counter() - started) * 1000.0,
         )
     finally:
