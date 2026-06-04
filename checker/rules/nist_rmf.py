@@ -70,7 +70,7 @@ def _govern_1_3_out_of_scope(prompt: str) -> list[Finding]:
         r"\bout\s+of\s+scope\b",
         r"\bdecline\s+to\s+(answer|respond|engage|help)",
         r"\bredirect\s+(?:the\s+)?(?:user|student|patient|caller)\s+to\b",
-        r"\b(forward|escalat\w*|hand\s+off)\s+(?:to|the)\s+(?:a\s+|the\s+)?(human|operator|reviewer|nurse|attorney|advisor|teacher)",
+        r"\b(forward|escalat\w*|hand\s+off)\s+(?:to|the)\s+(?:an?\s+|the\s+)?(human|operator|reviewer|nurse|attorney|advisor|teacher)",
         r"\boutside\s+the\s+\w+\s+(domain|flow|menu|topic)",
     ]
     if _any(refuse, prompt):
@@ -92,7 +92,7 @@ def _map_3_4_human_oversight(prompt: str) -> list[Finding]:
     """MAP-3.4: human oversight mechanism documented."""
     oversight = [
         r"\bhuman[\s-]+(in|on)[\s-]+the[\s-]+loop\b",
-        r"\bescalat\w*\s+(?:to\s+)?(?:a\s+|the\s+)?(human|operator|agent|nurse|attorney|advisor|teacher|reviewer|supervisor|on[\s-]+call)",
+        r"\bescalat\w*\s+(?:to\s+)?(?:an?\s+|the\s+)?(human|operator|agent|nurse|attorney|advisor|teacher|reviewer|supervisor|on[\s-]+call)",
         r"\b(forward|hand)\s+(?:off|over)\s+to\s+(?:a\s+)?(human|operator|agent)",
         r"\b(operator|reviewer|supervisor|nurse|attorney|advisor|teacher|editor|developer)\s+(?:must|will|should|shall)\s+(approve|review|confirm)",
         r"\b(human|operator)\s+(reviewer|nurse|attorney|advisor|teacher)\b",

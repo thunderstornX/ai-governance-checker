@@ -24,6 +24,7 @@ _FRAMEWORK_TITLES = {
     Framework.OWASP_LLM_2025.value: "OWASP Top 10 for LLM Applications (2025)",
     Framework.NIST_AI_RMF_1.value:  "NIST AI Risk Management Framework 1.0",
     Framework.EU_AI_ACT.value:      "EU AI Act, Regulation (EU) 2024/1689",
+    "judge_llm":                    "LLM-as-judge (additional findings)",
 }
 
 
@@ -71,7 +72,7 @@ def render_markdown(report: ScanReport) -> str:
         lines.append("| Framework | Findings |")
         lines.append("|---|---:|")
         for fw, count in sorted(s["by_framework"].items()):
-            lines.append(f"| {fw} | {count} |")
+            lines.append(f"| {_FRAMEWORK_TITLES.get(fw, fw)} | {count} |")
         lines.append("")
 
     # Findings grouped by framework, severity-sorted within each.
@@ -108,7 +109,7 @@ def render_markdown(report: ScanReport) -> str:
                 lines.append(f"_Rule id: `{f.rule_id}`._")
                 lines.append("")
 
-    if report.judge and not report.judge.findings:
+    if report.judge:
         lines.append("## LLM-as-judge")
         lines.append("")
         status = report.judge.status.value if hasattr(

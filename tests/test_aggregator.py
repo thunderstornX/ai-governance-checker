@@ -75,3 +75,16 @@ def test_aggregate_records_prompt_sha256():
     report = aggregate(prompt="some prompt", checks=[])
     assert report.prompt_sha256 == _prompt_sha256("some prompt")
     assert len(report.prompt_sha256) == 64
+
+
+def test_judge_findings_ignored_when_status_not_ok():
+    # Defensive: findings attached to an error-state judge result must not
+    # inflate the counts (a status==OK gate guards the judge-findings path).
+    judge = JudgeResult(
+        status=JudgeStatus.HTTP_ERROR,
+        provider="anthropic",
+        findings=[_f(Framework.OWASP_LLM_2025, "JUDGE-LLM", Severity.HIGH)],
+    )
+    report = aggregate(prompt="x", checks=[], judge=judge)
+    assert report.summary["total_findings"] == 0
+    assert report.summary["judge_status"] == "http_error"

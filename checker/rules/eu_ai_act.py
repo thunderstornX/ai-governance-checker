@@ -83,7 +83,7 @@ def _art14_human_oversight(prompt: str) -> list[Finding]:
     """Article 14: human oversight."""
     oversight = [
         r"\bhuman[\s-]+(in|on)[\s-]+the[\s-]+loop\b",
-        r"\b(escalat\w*|hand[\s-]+off|forward)\s+(?:to\s+)?(?:a\s+|the\s+)?(human|operator|reviewer|nurse|attorney|advisor|teacher|editor|developer|on[\s-]+call)",
+        r"\b(escalat\w*|hand[\s-]+off|forward)\s+(?:to\s+)?(?:an?\s+|the\s+)?(human|operator|reviewer|nurse|attorney|advisor|teacher|editor|developer|on[\s-]+call)",
         r"\b(human|operator|nurse|attorney|advisor|teacher|on[\s-]+call|reviewer|editor|developer)\s+(?:reviewer\s+)?(must|shall|will|should)\s+(approve|review|confirm)",
         r"\bhuman\s+(operator|reviewer|nurse|attorney|advisor|teacher|editor)\b",
     ]

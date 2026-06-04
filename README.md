@@ -10,7 +10,7 @@
             ─── system-prompt audit · OWASP · NIST · EU AIA ───
 ```
 
-[![Tests](https://img.shields.io/badge/pytest-90%2F90%20passing-brightgreen)](#testing)
+[![Tests](https://img.shields.io/badge/pytest-102%2F102%20passing-brightgreen)](#testing)
 [![Bandit](https://img.shields.io/badge/bandit-0%20issues-brightgreen)](results/security_scan.md)
 [![pip-audit](https://img.shields.io/badge/pip--audit-0%20vulns-brightgreen)](results/security_scan.md)
 [![Semgrep](https://img.shields.io/badge/semgrep-0%20findings-brightgreen)](results/security_scan.md)
@@ -141,19 +141,20 @@ and why we deliberately stopped tuning at this point.
 .venv/bin/pytest -q
 ```
 
-90 tests across the three rule packs, the judge module, the
-aggregator, and the reporter. HTTP is mocked with
+102 tests across the three rule packs, the judge module, the
+aggregator, the reporter, and the CLI. HTTP is mocked with
 [`respx`](https://lundberg.github.io/respx/).
 
 | Module               | Tests |
 |----------------------|------:|
 | `rules/owasp_llm.py` | 35    |
-| `rules/nist_rmf.py`  | 14    |
-| `rules/eu_ai_act.py` | 13    |
-| `llm_judge.py`       | 16    |
-| `aggregator.py`      | 5     |
-| `reporter.py`        | 7     |
-| **Total**            | **90**|
+| `rules/nist_rmf.py`  | 16    |
+| `rules/eu_ai_act.py` | 14    |
+| `llm_judge.py`       | 17    |
+| `aggregator.py`      | 6     |
+| `reporter.py`        | 8     |
+| `cli/main.py`        | 6     |
+| **Total**            | **102**|
 
 ## Security posture
 

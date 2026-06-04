@@ -39,7 +39,7 @@ def _summarise(checks: list[CheckResult],
             fw = f.framework.value if hasattr(f.framework, "value") else f.framework
             framework_counts[fw] += 1
 
-    if judge and judge.findings:
+    if judge and judge.status == JudgeStatus.OK and judge.findings:
         for f in judge.findings:
             sev = f.severity.value if hasattr(f.severity, "value") else f.severity
             severity_counts[sev] += 1

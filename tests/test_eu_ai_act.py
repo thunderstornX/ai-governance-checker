@@ -76,3 +76,9 @@ def test_run_eu_ai_act_returns_correct_framework_tag():
     chk = run_eu_ai_act("Help.")
     assert chk.framework == Framework.EU_AI_ACT
     assert chk.rules_run == 5
+
+
+def test_art14_silent_with_an_article_role():
+    # Regression: a vowel-initial oversight role ("an attorney") must satisfy
+    # the clause; the optional article group previously matched only "a"/"the".
+    assert _art14_human_oversight("Escalate to an attorney for hard cases.") == []

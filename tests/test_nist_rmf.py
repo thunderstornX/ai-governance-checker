@@ -81,3 +81,14 @@ def test_run_nist_rmf_clean_prompt_only_fires_info():
     chk = run_nist_rmf(p)
     framework_ids = {f.framework_id for f in chk.findings}
     assert framework_ids == {"MANAGE-2.3"}
+
+
+def test_map_3_4_silent_with_an_article_role():
+    # Regression: vowel-initial oversight roles ("an operator") must satisfy
+    # the clause; the optional article group previously matched only a/the.
+    assert _map_3_4_human_oversight("Escalate to an operator on uncertainty.") == []
+
+
+def test_govern_1_3_silent_with_an_article_redirect():
+    assert _govern_1_3_out_of_scope(
+        "You are a bot. Escalate to an advisor for edge cases.") == []

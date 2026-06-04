@@ -65,7 +65,7 @@ def _build_messages(prompt: str) -> list[dict]:
 
 def _normalise_severity(s: str) -> Severity:
     """Map free-text severity hints from the model into our enum."""
-    s = (s or "").strip().lower()
+    s = str(s or "").strip().lower()
     if s in ("critical", "crit"):
         return Severity.CRITICAL
     if s in ("high", "h"):
@@ -79,7 +79,7 @@ def _normalise_severity(s: str) -> Severity:
 
 def _normalise_framework(hint: str) -> Framework:
     """Map free-text framework hints onto our Framework enum."""
-    hint = (hint or "").strip().lower()
+    hint = str(hint or "").strip().lower()
     if hint.startswith("nist"):
         return Framework.NIST_AI_RMF_1
     if hint.startswith("eu"):

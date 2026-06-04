@@ -93,3 +93,29 @@ def test_render_markdown_renders_judge_disabled_status():
     md = render_markdown(report)
     assert "disabled" in md
     assert "rules-only fallback" in md
+
+
+def test_render_markdown_judge_with_findings_keeps_note_and_readable_title():
+    judge = JudgeResult(
+        status=JudgeStatus.OK,
+        provider="ollama",
+        findings=[Finding(
+            rule_id="judge.finding.00",
+            framework=Framework.OWASP_LLM_2025,
+            framework_id="JUDGE-LLM",
+            severity=Severity.MEDIUM,
+            title="Subtle role conflict",
+            detail="The judge flagged a framing risk.",
+        )],
+        note="model flagged 1 additional risk",
+    )
+    report = aggregate(prompt="x", checks=[], judge=judge)
+    md = render_markdown(report)
+    # readable section heading, not the raw "judge_llm" key
+    assert "LLM-as-judge (additional findings)" in md
+    assert "## judge_llm" not in md
+    # summary framework table uses the readable title, not the raw key
+    assert "| judge_llm |" not in md
+    # the judge note is preserved even when findings are present
+    assert "model flagged 1 additional risk" in md
+    assert "Subtle role conflict" in md

@@ -75,6 +75,18 @@ def test_parse_judge_reply_skips_titleless():
     assert _parse_judge_reply(body) == []
 
 
+def test_normalise_handles_non_string_values():
+    # Regression: a model returning a numeric severity / framework_hint must
+    # not crash the parser (str.strip() on an int raised AttributeError).
+    from checker.findings import Framework
+    assert _normalise_severity(99) == Severity.INFO
+    assert _normalise_framework(42) == Framework.OWASP_LLM_2025
+    out = _parse_judge_reply(
+        '{"findings":[{"title":"T","severity":99,"framework_hint":7}]}')
+    assert out is not None and len(out) == 1
+    assert out[0].severity == Severity.INFO
+
+
 # ---------------------------------------------------------------------------
 # judge() dispatch
 # ---------------------------------------------------------------------------
